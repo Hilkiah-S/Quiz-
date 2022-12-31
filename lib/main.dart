@@ -30,12 +30,20 @@ class Quizzler extends StatelessWidget {
 }
 
 class QuizPage extends StatefulWidget {
+
+  var questions;
+  var answernumb;
+  var answers;
+  QuizPage({Key? mykey,this.questions,this.answernumb,this.answers}):super(key:mykey); 
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-
+  int c1=0;
+  int c2=1;
+  int c3=2;
+  int c4=3;
    int a = 0;
   
   int s=0;
@@ -52,15 +60,15 @@ class _QuizPageState extends State<QuizPage> {
 if(a==r){
        print("THis works");
 }}
-  void verify(isittrue,useranswer,a){
+  void verify(answersnumb,useranswer,a){
     
    // print(isittrue);
     //print(useranswer);
-     if(isittrue[a]==useranswer[a]){
+     if(answersnumb[a]==useranswer[a]){
       correct+=0;
       s+=1;
       loon(correct);
-  print(isittrue);
+  print(answersnumb);
   print(useranswer);
 
   if(true){
@@ -120,12 +128,12 @@ if(a==r){
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
-          flex: 5,
+          flex:6,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                Questions[a],
+                widget.questions[a],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -137,7 +145,7 @@ if(a==r){
         ),
         Expanded(
           
-          
+            flex: 4,
             child: Padding(
               padding: const EdgeInsets.all(6.0),
               child: Row(
@@ -150,7 +158,7 @@ if(a==r){
                         backgroundColor:Colors.green,
                       ),
                       child: Text(
-                        'First',
+                        widget.answers[c1],
                         style: TextStyle(
                           
                           
@@ -163,10 +171,14 @@ if(a==r){
                       onPressed: () {
                         setState(() {
                           useranswer.add(1);
-                          verify(isittrue,useranswer,a);
-                          a+=1;
+                          
                         });
-                        //The user picked true.
+                       verify(widget.answernumb,useranswer,a);
+                          a+=1;
+                          c4+=4; 
+                              c1+=4;
+                              c2+=4; 
+                              c3+=4; //The user picked true.
                       },
                     ),
                   ),
@@ -180,7 +192,7 @@ if(a==r){
                         backgroundColor:Colors.green,
                       ),
                       child: Text(
-                        'Second',
+                        widget.answers[c2],
                         style: TextStyle(
                           
                           
@@ -193,10 +205,14 @@ if(a==r){
                       onPressed: () {
                         setState(() {
                           useranswer.add(2);
-                          verify(isittrue,useranswer,a);
-                          a+=1;
+                          
                         });
-                        //The user picked true.
+                       verify(widget.answernumb,useranswer,a);
+                          a+=1;
+                          c4+=4; 
+                          c1+=4;
+                          c2+=4; 
+                          c3+=4;//The user picked true.
                       },
                     ),
                   ),
@@ -205,70 +221,84 @@ if(a==r){
             ),
         ),
         
-        Padding(
-          padding:const EdgeInsets.all(6.0),
-          child: Expanded(
-            child: Row(
-                   
-                    children: [
-                      Expanded(
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                            backgroundColor:Colors.green,
-                          ),
-                          child: Text(
-                            'Third',
-                            style: TextStyle(
-                              
-                              
-                             // textColor: Colors.white,
-                          color: Colors.white,
-                             // color: Colors.white,
-                              fontSize: 20.0,
+        Expanded(
+          flex: 4,
+          child: Padding(
+            padding:const EdgeInsets.all(6.0),
+            child: Expanded(
+              
+              child: Row(
+                     
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                              backgroundColor:Colors.green,
                             ),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              useranswer.add(3);
-                              verify(isittrue,useranswer,a);
-                              a+=1;
-                            });
-                            //The user picked true.
-                          },
-                        ),
-                      ),
-                        SizedBox(
-                          width:10,
-                        ),
-                      Expanded(
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                            backgroundColor:Colors.green,
-                          ),
-                          child: Text(
-                            'Forth',
-                            style: TextStyle(
-                              
-                              
-                             // textColor: Colors.white,
-                          color: Colors.white,
-                             // color: Colors.white,
-                              fontSize: 20.0,
+                            child: Text(
+                              widget.answers[c3],
+                              style: TextStyle(
+                                
+                                
+                               // textColor: Colors.white,
+                            color: Colors.white,
+                               // color: Colors.white,
+                                fontSize: 20.0,
+                              ),
                             ),
+                            onPressed: () {
+                              setState(() {
+                                useranswer.add(3);
+                                
+                              });
+                             verify(widget.answernumb,useranswer,a);
+                                a+=1;
+                                c4+=4; 
+                                c1+=4;
+                                c2+=4; 
+                                c3+=4; //The user picked true.
+                            },
                           ),
-                          onPressed: () {
-                            setState(() {
-                              useranswer.add(4);
-                              verify(isittrue,useranswer,a);
-                              a+=1;
-                            });
-                            //The user picked true.
-                          },
                         ),
-                      ),
-                    ],),
+                          SizedBox(
+                            width:10,
+                          ),
+                        Expanded(
+                        
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                              backgroundColor:Colors.green,
+                            ),
+                            child: Text(
+                              widget.answers[c4],
+                              style: TextStyle(
+                                
+                                
+                               // textColor: Colors.white,
+                            color: Colors.white,
+                               // color: Colors.white,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                useranswer.add(4);
+                               
+                              });
+                             verify(widget.answernumb,useranswer,a);
+                                a+=1;
+                                c4+=4; 
+                                c1+=4;
+                                c2+=4; 
+                                c3+=4;
+                                 //The user picked true.
+                            },
+                          ),
+                        ),
+                      ],),
+            ),
           ),
         ),
         

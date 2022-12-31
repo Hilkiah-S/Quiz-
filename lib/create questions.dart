@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quiz/main.dart'; 
 
 class Anewquestion extends StatefulWidget {
   const Anewquestion({super.key});
@@ -65,10 +66,10 @@ children:[
       child:Text("Submit",style: TextStyle(color:Colors.white,fontSize: 10.0),),
       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
       onPressed:(){
-      createdquestions.add(question1);
+      createdquestions.add(edittext.text);
     
          setState((){
-          question=" ";
+          //question=" ";
           output=output+"${a},  ${createdquestions[b]}\n";
          });
          edittext.clear();
@@ -154,7 +155,12 @@ children:[
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextField(
-         
+          decoration: InputDecoration(
+            fillColor: Colors.grey[300],
+            filled: true,
+            border:OutlineInputBorder(),
+            hintText:"Choice number 4..",
+          ),
           controller: edittext4,
           style: TextStyle(color: Colors.black),
           onSubmitted: (somevalue){setState((){
@@ -188,7 +194,11 @@ children:[
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextField(
-          decoration: InputDecoration(labelText: 'Enter Number'),
+          decoration: InputDecoration(
+             fillColor: Colors.grey[300],
+            filled: true,
+            border:OutlineInputBorder(),
+            labelText: 'Enter Number'),
  keyboardType: TextInputType.numberWithOptions(),
 inputFormatters: <TextInputFormatter>[
   FilteringTextInputFormatter.allow(RegExp(r'[0-9]+[,.]{0,1}[0-9]*')),
@@ -222,23 +232,35 @@ inputFormatters: <TextInputFormatter>[
     height: 20.0,
   ),
   ElevatedButton(onPressed: (){
-   createdanswers.add(choice1);
-   createdanswers.add(choice2);
-   createdanswers.add(choice3);
-   createdanswers.add(choice4);
-   answerlist.add(answer);
+   createdanswers.add(edittext1.text);
+   createdanswers.add(edittext2.text);
+   createdanswers.add(edittext3.text);
+   createdanswers.add(edittext4.text);
+   answerlist.add(int.parse(edittextlast.text));
    edittext1.clear();
    edittext2.clear();
    edittext3.clear();
    edittext4.clear();
    edittextlast.clear();
-   print("Question quee"+ createdanswers[3]);
+   print("Question quee "+ createdanswers[3]);
+   print(createdquestions[0]);
+   print(answerlist[0]);
+   print("Done");
  setState(() {
    q++;
  });
 
   }, child: Text("Submit Question${q}")),
-
+     SizedBox(height:20.0),
+     Row(
+       children: [
+         Text("Done, with the questions?", style: TextStyle(color:Colors.blue,fontSize: 20.0),),
+         SizedBox(width: 10.0,),
+         ElevatedButton(onPressed:(){
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>QuizPage(questions:createdquestions,answernumb:answerlist,answers:createdanswers)));
+         } , child: Text("Submit All"))
+       ],
+     )
      ]));
   }
 }
