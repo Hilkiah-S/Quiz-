@@ -85,27 +85,6 @@ if(a==r){
       }
     }
 
-    //(a>2&&s>=2)? Navigator.pushNamed(context, '/pass'):Navigator.pushNamed(context, '/fail'); }
-       /*s+=1;
-       print("Same");
-       z+=1;
-       }
-       else{
-        print("DIFFERENT");
-        z+=1;
-       }
-       
-       z+=1;*/
-       
-       //if(a==1 ){
-        //Navigator.pushNamed(context, '/pass');
-        
-      // }
-       /*if(a>2){
-        //Navigator.pushNamed(context, '/fail');
-       print("Second time");
-       }*/
-     
   }
   
   List<int> useranswer=[];
@@ -123,198 +102,192 @@ if(a==r){
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Expanded(
-          flex:6,
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Center(
-              child: Text(
-                widget.questions[a],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.grey[400],
+     
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              flex:6,
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Center(
+                  child: Text(
+                    widget.questions[a],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          
-            flex: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                        backgroundColor:Colors.green,
-                      ),
-                      child: Text(
-                        widget.answers[c1],
-                        style: TextStyle(
-                          
-                          
-                         // textColor: Colors.white,
-                      color: Colors.white,
-                         // color: Colors.white,
-                          fontSize: 20.0,
+            Expanded(
+              
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                            backgroundColor:Colors.green,
+                          ),
+                          child: Text(
+                            widget.answers[c1],
+                            style: TextStyle(
+                              
+                              
+                             // textColor: Colors.white,
+                          color: Colors.white,
+                             // color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              useranswer.add(1);
+                              
+                            });
+                           verify(widget.answernumb,useranswer,a);
+                              a+=1;
+                              c4+=4; 
+                                  c1+=4;
+                                  c2+=4; 
+                                  c3+=4; //The user picked true.
+                          },
                         ),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          useranswer.add(1);
-                          
-                        });
-                       verify(widget.answernumb,useranswer,a);
-                          a+=1;
-                          c4+=4; 
+                        SizedBox(
+                          width:10,
+                        ),
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                            backgroundColor:Colors.green,
+                          ),
+                          child: Text(
+                            widget.answers[c2],
+                            style: TextStyle(
+                              
+                              
+                             // textColor: Colors.white,
+                          color: Colors.white,
+                             // color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              useranswer.add(2);
+                              
+                            });
+                           verify(widget.answernumb,useranswer,a);
+                              a+=1;
+                              c4+=4; 
                               c1+=4;
                               c2+=4; 
-                              c3+=4; //The user picked true.
-                      },
-                    ),
-                  ),
-                    SizedBox(
-                      width:10,
-                    ),
-                  Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                        backgroundColor:Colors.green,
-                      ),
-                      child: Text(
-                        widget.answers[c2],
-                        style: TextStyle(
-                          
-                          
-                         // textColor: Colors.white,
-                      color: Colors.white,
-                         // color: Colors.white,
-                          fontSize: 20.0,
+                              c3+=4;//The user picked true.
+                          },
                         ),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          useranswer.add(2);
-                          
-                        });
-                       verify(widget.answernumb,useranswer,a);
-                          a+=1;
-                          c4+=4; 
-                          c1+=4;
-                          c2+=4; 
-                          c3+=4;//The user picked true.
-                      },
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
             ),
-        ),
-        
-        Expanded(
-          flex: 4,
-          child: Padding(
-            padding:const EdgeInsets.all(6.0),
-            child: Expanded(
+             Expanded(
               
-              child: Row(
-                     
-                      children: [
-                        Expanded(
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                              backgroundColor:Colors.green,
-                            ),
-                            child: Text(
-                              widget.answers[c3],
-                              style: TextStyle(
-                                
-                                
-                               // textColor: Colors.white,
-                            color: Colors.white,
-                               // color: Colors.white,
-                                fontSize: 20.0,
-                              ),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                useranswer.add(3);
-                                
-                              });
-                             verify(widget.answernumb,useranswer,a);
-                                a+=1;
-                                c4+=4; 
-                                c1+=4;
-                                c2+=4; 
-                                c3+=4; //The user picked true.
-                            },
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                            backgroundColor:Colors.green,
                           ),
+                          child: Text(
+                            widget.answers[c3],
+                            style: TextStyle(
+                              
+                              
+                             // textColor: Colors.white,
+                          color: Colors.white,
+                             // color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              useranswer.add(3);
+                              
+                            });
+                           verify(widget.answernumb,useranswer,a);
+                              a+=1;
+                              c4+=4; 
+                                  c1+=4;
+                                  c2+=4; 
+                                  c3+=4; //The user picked true.
+                          },
                         ),
-                          SizedBox(
-                            width:10,
-                          ),
-                        Expanded(
-                        
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
-                              backgroundColor:Colors.green,
-                            ),
-                            child: Text(
-                              widget.answers[c4],
-                              style: TextStyle(
-                                
-                                
-                               // textColor: Colors.white,
-                            color: Colors.white,
-                               // color: Colors.white,
-                                fontSize: 20.0,
-                              ),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                useranswer.add(4);
-                               
-                              });
-                             verify(widget.answernumb,useranswer,a);
-                                a+=1;
-                                c4+=4; 
-                                c1+=4;
-                                c2+=4; 
-                                c3+=4;
-                                 //The user picked true.
-                            },
-                          ),
+                      ),
+                        SizedBox(
+                          width:10,
                         ),
-                      ],),
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            padding:EdgeInsets.symmetric(horizontal:5.0,vertical:3.0),
+                            backgroundColor:Colors.green,
+                          ),
+                          child: Text(
+                            widget.answers[c4],
+                            style: TextStyle(
+                              
+                              
+                             // textColor: Colors.white,
+                          color: Colors.white,
+                             // color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              useranswer.add(4);
+                              
+                            });
+                           verify(widget.answernumb,useranswer,a);
+                              a+=1;
+                              c4+=4; 
+                              c1+=4;
+                              c2+=4; 
+                              c3+=4;//The user picked true.
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-          ),
-        ),
-        
-        
-        //TODO: Add a Row here as your score keeper
-      Row(
-      
-        children:AtomList,
-      )
-      ],
-    );
-  }
-}
+           Row(
+          
+            children:AtomList,
+          ),  
+          
+  ],),);}
+          
+           
+            
+} 
 
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
+
