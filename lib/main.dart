@@ -31,10 +31,11 @@ class Quizzler extends StatelessWidget {
 
 class QuizPage extends StatefulWidget {
 
+  var quest;
   var questions;
   var answernumb;
   var answers;
-  QuizPage({Key? mykey,this.questions,this.answernumb,this.answers}):super(key:mykey); 
+  QuizPage({Key? mykey,this.questions,this.answernumb,this.answers,this.quest}):super(key:mykey); 
   @override
   _QuizPageState createState() => _QuizPageState();
 }
@@ -76,11 +77,11 @@ if(a==r){
   }
    // (a>2)? Navigator.pushNamed(context,'/decide'):print("Not yet");
     }
-    if(a==2){
-      if(s>=2){
+    if(a==widget.quest){
+      if(s>=int.parse(widget.quest/2)){
      Navigator.pushNamed(context, '/pass');
       }
-      if(s<2){
+      if(s<(int.parse(widget.quest/2))){
         Navigator.pushNamed(context, '/fail');
       }
     }

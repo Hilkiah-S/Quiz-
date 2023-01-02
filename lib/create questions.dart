@@ -258,7 +258,9 @@ inputFormatters: <TextInputFormatter>[
          Text("Done, with the questions?", style: TextStyle(color:Colors.blue,fontSize: 20.0),),
          SizedBox(width: 10.0,),
          ElevatedButton(onPressed:(){
-          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>QuizPage(questions:createdquestions,answernumb:answerlist,answers:createdanswers)));
+          int numberofquestion= createdquestions.length;
+          
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>QuizPage(questions:createdquestions,answernumb:answerlist,answers:createdanswers,quest:numberofquestion)));
          } , child: Text("Submit All"))
        ],
      )
